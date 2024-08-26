@@ -161,6 +161,9 @@ Comply with data privacy regulations (e.g., GDPR, HIPAA). Anonymize data where p
 Masking unwanted text in unstructured documents is crucial for data privacy, content management, and legal compliance. Large Language Models (LLMs) like Google’s Gemini offer a powerful tool for automating this process, providing flexibility and contextual understanding that traditional methods lack.
 
 By following this guide, you can set up a basic masking system using LLMs and customize it to your specific needs. Fine-tuning models can further enhance performance and efficiency, ensuring your data remains secure and appropriately managed.
-ent
+
+Pavan Somisetty
+pavansomisetty21@gmail.com
+
  
 
