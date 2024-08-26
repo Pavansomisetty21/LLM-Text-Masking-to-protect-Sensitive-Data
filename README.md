@@ -88,7 +88,53 @@ print(masked_document)
 
 
 ```
- and this can also can be done on documents also
+ and this can also can be done Text masking on documents also this will be in code as:
+
+ ```python
+import pandas as pd
+import warnings
+import os
+from dotenv import load_dotenv,find_dotenv
+import google.generativeai as genai
+import getpass
+# Set the API key and Gemini model name directly in the code
+
+model_name = "gemini-1.5-flash"
+api_key = getpass.getpass("Enter your Google Gemini API key: ")
+# Ensure the API key is set
+if not api_key:
+    raise ValueError("API_KEY must be set.")
+
+# Configure the generative AI client
+genai.configure(api_key=api_key)
+
+print(f"Using MODEL={model_name}")
+import PyPDF2
+def extract_text_from_pdf(pdf_path):
+    with open(pdf_path, 'rb') as file:
+        reader = PyPDF2.PdfReader(file)
+        text = ''
+        for page in reader.pages:
+            text += page.extract_text()
+    return text
+
+# Example usage
+pdf_path = r'C:\Users\pavan\OneDrive\Desktop\PAVAN SOMISETTY.pdf'#path to your document
+document = extract_text_from_pdf(pdf_path)
+import google.generativeai as gemini
+
+def mask_unwanted_text_gemini(document, mask_token="[MASK]"):
+    # Set up the prompt for the Gemini model
+   
+     response = model.generate_content(f"Please mask any sensitive information like name, phone numbers, email addresses, or credit card numbers in the following text, replacing them with '{mask_token}':\n\n{document}")
+  
+    # Return the masked document
+     return response.text
+
+
+masked_document = mask_unwanted_text_gemini(document)
+print(masked_document)
+```
 
 
 ### Collect and Label Data
